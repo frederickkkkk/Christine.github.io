@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>我们的爱情时光轴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ff69b4;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            border: 4px solid #fff;
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff69b4, #ff8e53);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 3px solid #f0f0f0;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #ff69b4;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .timeline-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .music-btn {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            background: #ff8e53;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0 !important;
+            }
+            
+            .timeline-item:nth-child(even)::after,
+            .timeline-item:nth-child(odd)::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💕 我们的爱情时光轴 💕</h1>
+            <p>我们一起走过的路</p>
+        </div>
+
+        <div class="timeline">
+            <!-- 时间线项目 1 -->
+            <div class="timeline-item" style="animation-delay: 0s;">
+                <div class="timeline-content">
+		    <img src="./images/第一次出去.jpg" alt="第一次见面" class="timeline-image">
+                    <img src="./images/第一次出去2.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年8月9日</span>
+                    <h3 class="timeline-title">第一次出去玩</h3>
+                    <p class="timeline-description">第一次出来玩我们去安仁古镇，从最开始出来我们各自打好车，真的很有意思哈哈哈，谁做谁打的车还僵持了一会。我记得那天下午下着雨，但是我们在古镇里面转路转的很开心，我不太认路，有好几个地方走了好几次我才反应过来。但是那一次真的真的很开心。你知道吗，早在这个时候甚至更早我就喜欢上你了，欣然，只是我一直不敢承认心中的想法，我好笨</p>
+                </div>
+            </div>
+
+            <!-- 时间线项目 2 -->
+            <div class="timeline-item" style="animation-delay: 0.2s;">
+                <div class="timeline-content">
+                    <img src="./images/第二次出去.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次出去2.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年8月13日</span>
+                    <h3 class="timeline-title">第二次出去玩</h3>
+                    <p class="timeline-description">第二次我们去了人民公园，去看了相亲角，你记得我们说给zys介绍一个川大研究生学姐吗，哈哈哈。还要那天在公园我们遇见了采访，好神奇，你说你喜欢有很多肌肉的，当时给我吓死了，我还以为你不喜欢我了。中午吃了烤匠，但是说真的我觉得那一次的烤匠是最好吃的，不知道为什么。下午我们去春熙路，拍了两张游客照，还去抓娃娃，但是一个都没有抓到，我们说再也不抓了，但是我们寒假回来继续抓哈哈哈。</p>
+                </div>
+            </div>
+
+	    <!-- 时间线项目3 -->
+            <div class="timeline-item" style="animation-delay: 0.2s;">
+                <div class="timeline-content">
+                    <img src="./images/正式在一起.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年8月20日</span>
+                    <h3 class="timeline-title">正式在一起</h3>
+                    <p class="timeline-description">那一天我实在是按捺不住心中的想法了，我心里无比的确定我已经喜欢上你了，我不想错过你，幸运的是你答应了我。但是那天好笑的是我们都没有转变好身份，导致我们中间沉默了好长一段时间，那个时候其实我特别紧张，我害怕你突然说不合适。还有我记得那天你给我画的蝴蝶，你看，真的好漂亮。</p>
+                </div>
+            </div>
+
+            <!-- 时间线项目4 -->
+            <div class="timeline-item" style="animation-delay: 0.4s;">
+                <div class="timeline-content">
+                    <img src="./images/在一起后第一次约会.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年8月23日</span>
+                    <h3 class="timeline-title">在一起后第一次约会</h3>
+                    <p class="timeline-description">我们还真是不同哈哈哈，小众情侣，我们第一次约会是去书店，先去的华西校区那边的书店，再到了四川省图书馆，当时其实我整个心情都不在看书上面，因为你在我身边，我全程的心情都是很激动的，根本平静不下来，你在我身边看书，很多时候我都忍不住的偏头看你。地铁上你第一次拉我的手，我当时大脑一下就蒙了，就是一整个空白，喜欢的女孩子第一次拉我的手，我到最后取到花，那束花真的好漂亮，我好喜欢，但是我妈作为女人的直觉简直太准了，一下子就看出来了，我还以为不会。</p>
+                </div>
+            </div>
+
+            <!-- 时间线项目5-->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/9月.jpg" alt="第一次见面" class="timeline-image">
+	            <img src="./images/9月2.jpg" alt="第一次见面" class="timeline-image">
+                    <img src="./images/9月3.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年9月</span>
+                    <h3 class="timeline-title">第一次开启异地恋</h3>
+                    <p class="timeline-description">哈哈哈这段时间真的好有意思，虽然是异地，但是每天分享好多东西，我第一次看到刺猬，墩墩给你拍照，有一天晚上我特别想听你说你喜欢我，那个时候还不太好意思，我晚上回去在罗森买了上大学第一瓶酒，喝完给你说，笑死了。在此省略一万字，发生了好多好多有趣的事...............还有你来天津的那一天，晚霞真的好漂亮好漂亮，我之后没有见到那么壮观的了</p>
+                </div>
+            </div>
+	     
+	    <!-- 时间线项目6 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第一次天津.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次天津2.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年10月1日</span>
+                    <h3 class="timeline-title">第一次旅游来到天津</h3>
+                    <p class="timeline-description">第一次从机场接你，我紧张的提前了好久到，哈哈哈，我在那个国内到达眼睛都不敢眨太久，等着你出来，到酒店之后心都还没有平静，第一次亲我脸我整个人更蒙了，我太笨了，还躲开了，欣然你真的好勇敢。但是后来亲亲我也勇敢了一次。之后几天好快乐呀，我们去了好多地方，天大老校区，天大新校区，周邓纪念馆，五大道，国家海洋纪念博物馆。不过第一次我们还没品尝当地特色，怪我攻略没做好，天天跟着我吃火锅。当时第一天见到了tyh，第四天你还去了一趟北京哈哈哈，时间安排的好紧凑。你走的那天再机场我真的好难受，我一个人回到酒店简直不知所措了，会学校的地铁上我一直刷视频，看看怎么缓解，但是后来我也想通了，分别就是为了下一次更好的遇见，异地的感情更经得起考验</p>
+                </div>
+
+            </div>
+	      <!-- 时间线项目7 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+		    <img src="./images/第二次异地.jpg" alt="第一次见面" class="timeline-image">
+                    <img src="./images/第二次异地2.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次异地3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次异地4.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次异地5.jpg" alt="第一次见面" class="timeline-image">
+		    <span class="timeline-date">2024年10月-12月</span>
+                    <h3 class="timeline-title">开启第二段异地</h3>
+                    <p class="timeline-description">这一段经历好长，3个多月，欣然你一定是很难受的，你才玩了就要回去参加军训，真的好心疼。但是这个期间我们也发生了好多好多，这边秋冬的日落真的很漂亮，你也和我看了好多好多次哈哈。我们打视频我截了很多好看的照片，你也给我发了很多可爱的照片视频，最乖的是那张英语课上的，我真的好喜欢。我们一起预测美国大选，之前我还觉得我肯定预测得准，但最后你赢了哈哈哈，trump带着你赢了。我们抖音上互动好多好多消息，可惜这里只能看到你@我的哈哈哈。你给我听了很多好听的歌，日落大道就是这个时候你给我分享的，第一次听好惊艳。你给我发的冬季测试男友测试我拿了特别高的分，你记得吗。冬天我最喜欢的是麻辣烫，天天给你发哈哈哈。1月1日跨年我们一起！好开心。最后我们一起经历了第一次期末周，感觉还不错唉。这一段还有很多很多，此处篇幅有限｡•́︿•̀｡，下次继续补充</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目8 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第一次长沙.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次长沙2.jpg" alt="第一次见面" class="timeline-image">
+    		    <img src="./images/第一次长沙3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次长沙4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2024年1月15日</span>
+                    <h3 class="timeline-title">第一次旅游来到长沙</h3>
+                    <p class="timeline-description">当时我先考完试来到长沙，这几天我们真的好幸福，我第一次来接你考试，送你去考试，解锁人生新体验，晚上我记得有一次去后湖小区那吃，那天吃了好多小吃，熏肉大饼真的好吃。你考完试之后我们去了橘子洲，岳麓山，咱们和主席还真是有缘，没想到最后你会到主席的家乡去读书，我还记得上岳麓山你晕碳了哈哈哈，下山我们用梯度下降法好快，10多分种就下来了，下山喝了邮局咖啡，上面贴了湖师大哈哈哈。最后一天也好幸福，我们去中南逛逛逛，在草坪上我给你讲c++哈哈哈，这是什么操作，晚上我们去杜甫江阁拍照片！！！！！最后我们去吃小吃，有一个海鲜老板太坑了一直给我们加，最后那天回去晕车晕惨了，但回去好幸福，你陪我一起熬夜，好感动好感动，我们一起熬夜看了一场电影，但是最后我先睡着了つ﹏<，还是你更强。哦对了，这次旅行我第一次发现你高马尾真的好好看</p>
+                </div>
+            </div>
+
+	       <!-- 时间线项目 4 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第一次成都5.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次成都2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第一次成都3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次成都4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年1月21日-2025年2月13日</span>
+                    <h3 class="timeline-title">第一次非异地</h3>
+                    <p class="timeline-description"> 回成都开启非异地，合生汇！新光天地！温江大草原！.........我们每天晚上逛逛逛，喝喝喝，茉莉奶白，喜茶，莫酸奶，Tims，我靠好多好多，我们都是第一次一起去喝，好幸福，每天晚上加餐都吃肯德基，笑死了。大草原上遇见了好多狗狗，哈哈哈你和我都喜欢狗大于猫，你喜欢金毛和伯恩山，我也很喜欢哈哈哈，虽然我最喜欢的是阿拉斯加。除夕那天我们出来见面，温江这么多年第一次放这么多烟花，我直接被那个味道熏吐了，我的天，但是吐了之后就好了。大年初一我们去的春熙路，我们在无印良品玩游戏，找找找，我记得最后是我赢了哈哈哈。还有晚上一起打游戏，王者！这个时期我记得你很喜欢玩安琪拉，当时我们还不打排位，一直玩10V10，关键词：10v10，安琪拉+吕布大王。还差点忘了重量级，抓娃娃，我们抓了一堆娃娃哈哈哈，最开始我们啥都抓不到，但是后来技术增加，加上前台姐姐的帮助，最后直接抓很多！但是遗憾的是这个寒假太短了(｡╯︵╰｡)</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 10 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第一次重庆.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次重庆2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第一次重庆3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次重庆4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年2月13日</span>
+                    <h3 class="timeline-title">第一次旅游来重庆+第一次情人节！！！</h3>
+                    <p class="timeline-description">冬天的重庆还是别有一番风味，我感觉这次去重庆是最充实的一次哈哈哈，两天把好多景点全部逛完了，人民解放纪念碑，山城步道，下浩里，十八梯，洪崖洞，这里点名批评洪崖洞，人太多了，但是重庆给我的感觉真的好特别，就是不同于以往去的所有城市。重庆的美食真的好吃，蹄花，火锅，不过可惜我正好口腔溃疡吃不了o(〒﹏〒)o，全部只能吃不沾辣椒的。我们有一天下午还第一次一起去了猫咖，遇见了蛋蛋，真的好乖，不要吃的就可以一直趴在你的腿上，蛋蛋的衣服也好漂亮哈哈哈，蛋蛋这就属于遗传，它的哥哥不就因为乖被买走了吗哈哈哈。我对在山顶围炉煮茶的印象最深刻，真的好幸福，如果可以一直坐在那，但是上山的路太难爬了哈哈哈。第一次情人节也是在重庆！那束花我还以为会不好看，结果那么好看，里面的棉花我记得你带回去好久都没坏，重庆是我的神！可惜重庆真的呆的时间太短了(ಥ﹏ಥ)</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 11-->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第三次异地.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第三次异地2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第三次异地3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第三次异地4.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第三次异地5.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年3月</span>
+                    <h3 class="timeline-title">第三次异地</h3>
+                    <p class="timeline-description">第三次异地感觉过的好慢，虽然只有一个月，这期间我们也有好多有意思的事情发生，有一天晚上突然地震来了哈哈哈，全楼的人都下去了，给你也吓到了。有一天你挤痘痘给我发了一张好可爱的照片哈哈哈。还有一天我直接睡到过了，课都没去上，你那天叫我小哥哥，笑死了。你还去拍了一组美美的山茶花照片，我们一起选了我微信运动的背景，一直用到现在，还有印象深刻的是你第二次来天津之前得了肠胃炎，真的好心疼，你输液的那一天给我发了一句语音真的好好听，我一直收藏到现在，我得了甲流，可恶的不带口罩的人，当天回去就全身发软咳嗽，幸好我第一时间买了药。其他便是每天的视频，真的幸福(╥_╥)</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 12 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第二次天津.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次天津2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第二次天津3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次天津4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年4月3日</span>
+                    <h3 class="timeline-title">第二次旅游来天津</h3>
+                    <p class="timeline-description">第二次去机场接你我见到你的时候真的熟悉又陌生，让我一下脑子都变成空白了真的。但是第二次来天津真的好开心，第一天我们去意大利风情街拍拍拍，你穿的那条黑色裙子好美。第二天我们去天大海棠节！！！你和海棠的那几组照片真的好融洽，那条白色的裙子也很美，唉，我都记不到多久买的了。我第一次和你的ccd磨合哈哈哈，那个我拍你的照片真的绝，我摄影还是很厉害的，当然还有你的指导，何老师。我们还拍了合照，虽然我觉得我拍的很丑。我们第二次去天津吃的都好好吃，吃了天津菜，你觉得特别好吃哈哈哈，你适合来北方，第二天晚上我们去了一家美美的餐厅，后来居然phl也去了。可惜这次很短，哭，不过我也很开心哈哈哈</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 13 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第四次异地.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第四次异地2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第四次异地3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第四次异地4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年4月</span>
+                    <h3 class="timeline-title">第四次异地</h3>
+                    <p class="timeline-description">哈哈哈，这次异地好短，我很满意。但是貌似趣事也不少，笑死了，我第一次试验电脑串流屏幕到平板上，想要教你的，但是你不用校园网，哭死，直接开始就放弃了。有一个周六我去上实验课，上着上着，我的电脑电源适配器冒烟了，哈哈哈，我的天，我再晚点看到烟没准就炸了。还有我有一次给你p图，被你说p图技术太差，哈哈哈，图片我就不放上来了。还有那天天津大风，说的13级，自习室都关了，结果我感觉就是一般大风。这期间导员还组织期中考，我记得你最后有一科还是去参加了。唉对了这期间你给我说谭ry谈朋友了，恭喜哈哈哈。还有我记得你有一次闻到香樟树的花了，春天真的好美好呀</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 14-->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第一次烟台.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次烟台2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第一次烟台3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次烟台4.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次烟台5.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年4月30日</span>
+                    <h3 class="timeline-title">第一次旅游去烟台</h3>
+                    <p class="timeline-description">烟台旅游好好玩，gogogo出发咯，开始你忘带身份证了，可怜，还是何俊杰，hjj还是真好。我们第一天到了就吃了好吃的海鲜面，我爱爱爱，太好吃了，蓬莱小面。第二天的大将军料理，无骨鸡爪香死了，然后去沿着海边逛逛逛，晚上点外卖！看电影！第三天我们去拍照，可惜我的眼睛那天太不争气了，对着闪光灯就不行，哭。下午我们去赶海，但是冷死了，啥都没有.｡･ﾟﾟ･(＞_＜)･ﾟﾟ･｡.后来第四天我们去朝阳街，晚上去吃那个海肠捞饭，我觉得真的很不错，不咸不淡，我能吃5碗。第五天凌晨我们突然决定去再留一天，续一下费。后来我们就去看日出了，这是我们第一次海边看日出！！！好美好，当时出去好冷好冷哈哈哈。下午我们去学线代！你学的好棒。晚上去逛商场试衣服，然后回去吃饭。第六天去了烟台山，好矮笑死了，不过景色还是不错，我们去吃了烤肉！绷不住了，但是确实感觉还可以。最后续费两天后还是得离开了(╯_╰)</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 15-->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第五次异地.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第五次异地2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第五次异地3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第五次异地4.png" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年5月</span>
+                    <h3 class="timeline-title">第五次异地</h3>
+                    <p class="timeline-description">这次异地好像我们大家都很忙，你准备了好多次考试，我训练模型哈哈哈，生成了一堆诡异的照片。但是也发生好多事，我记得有一晚上我们打视频遇见了刺猬，你让我去追它，哈哈哈，追的它直跑。你买了一条超美的绿色短裙。唉，说到裙子，我的天，520那一次是真的巧，我真没想到我们想的会是同款。还有一次拨浪鼓小狗表情包，好可爱。但是这期间社会上发生了好多事，比如黄杨女生。这段时间我感觉不是很漫长，而且充实又幸福</p>
+                </div>
+            </div>
+
+ <!-- 时间线项目 16 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第二次长沙.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次长沙2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第二次长沙3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次长沙4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年5月30日</span>
+                    <h3 class="timeline-title">第二次旅游去长沙</h3>
+                    <p class="timeline-description">这次去长沙是真的很热很热，笑死了，也是见识了长沙的夏天，不过这次旅游好充实，我们先是去打了hpv疫苗，我还了解了hpv疫苗男生也可以打。去了猫咖，不过那个猫咖笑死了，猫的颜值好丑，不过有一只超帅。第二天我们去唱歌，你在台上打着伞唱的真的很好，那一天你第一次给我卷头发，还把那个送我了。第三天我们去打游戏!第一次玩到超级鸡马，我打不过你，哭哭哭。那天晚上我们看熊出没实在太困睡着了。我们吃了好多好吃的，湘菜，西餐店，泰国菜。我们还一起看了盗梦空间，笑死了，开始那个对焦没对上 一直很模糊，最后一天知道可以调。但第二天一早就离开了(μ_μ)</p>
+                </div>
+            </div>
+
+	      <!-- 时间线项目 17 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第六次异地.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第六次异地2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第六次异地3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第六次异地4.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年6月</span>
+                    <h3 class="timeline-title">第六次异地</h3>
+                    <p class="timeline-description">这次异地我们更忙哈哈哈，我就长话短说。你是期末周，我们期末周没有几个科目，但是一直做实验，写实验报告。有天晚上宿舍警报想起来，我还以为导弹来了，吓死了那天晚上，全楼的人都跑出去了。有一次你和室友出去拍照，有一个照片超级美，包括后来你去新疆那一次有一个照片好喜欢。哈哈哈，突然翻照片看见一个好漂亮的小猫，不过身上脏脏的哈哈。这一次我就不说那么多了，重点在后面･ﾟ･(｡>ω<｡)･ﾟ･。</p>
+                </div>
+            </div>
+
+<!-- 时间线项目 18 -->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第二次非异地.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次非异地2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第二次非异地3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次非异地4.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第二次非异地5.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年7月14日-2025年9月4日</span>
+                    <h3 class="timeline-title">第二次非异地+第一次七夕节！！！</h3>
+                    <p class="timeline-description"> 这次暑假我们干了好多事情，好开心，我们去了两次狗咖，是我们第一次一起去，最乖的腊肠犬，一个月长的好大呀，最坏的淘淘和闭月，都要抢吃的！不过第二次闭月好多了。我们还一起去看来两场电影，每一场都好看，好幸福。我们还去骑了好多次的车，真的帅，每次你都让我骑慢点哈哈哈，有一次我送你回去绕到hjj那边又回来了，走不通。我们还一起去吃了好多好吃的，点名表扬三两，很不错。我们还一起去唱歌！虽然全程听你唱，真的好幸福。还有王者哈哈哈，我们终于终于开始打排位了，你开始找到了本名英雄米莱迪，还拿了标，你的星耀晋级赛和我的王者晋级赛我们都打了好久笑死了，最终你成功晋级，我晋级失败，笑死了。你每天录视频不落下，后来还练吉他，我做家教和做实验，学习生活两不误哈哈哈。七夕节！我们第一次一起去做了戒指！！！我觉得真的帅，有一种简约的美。我感觉比第一次寒假充实和有趣多了，对了你还在大草坪上唱了一首歌哈哈哈，可惜感觉还是很短(ಥ﹏ಥ)（虽然有两个月）</p>
+                </div>
+            </div>
+
+<!-- 时间线项目 19-->
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <img src="./images/第一次贵阳.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次贵阳2.jpg" alt="第一次见面" class="timeline-image">
+ 		    <img src="./images/第一次贵阳3.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次贵阳4.jpg" alt="第一次见面" class="timeline-image">
+                    <img src="./images/第一次贵阳5.jpg" alt="第一次见面" class="timeline-image">
+		    <img src="./images/第一次贵阳6.jpg" alt="第一次见面" class="timeline-image">
+                    <span class="timeline-date">2025年8月18日</span>
+                    <h3 class="timeline-title">第一次旅游去贵州</h3>
+                    <p class="timeline-description">这次贵州之旅长且幸福。我们先去的内江，内江确实没啥好玩的，但是我感觉那个火锅和牛肉面还是很好吃，你的牛肉面有点麻了。到贵阳的当天就下雨笑死了，但是下一会停一会，酸汤火锅！名副其实酸，但是我好像不是很能吃的来，穿了好几天，晚上我们去一家咖啡店，刹一脚好有意思，还去那个白宫，拍照确实好看。第二天去了安顺，那个火锅好吃！晚上去吃鱼火锅，好吃+1，还去了安顺古镇，给我感觉挺好的。后来去的龙宫和黄果树大瀑布，都很好玩！很震撼，我感觉你在黄果树大瀑布拍的照片好有活力。之后去了苗寨，虽然很商业化，但是我很喜欢，你记得最后一晚我们在酒店望着万家灯火吗，那种感觉真的好难望，你拍了好好看的照片，我拍的和摄影师拍的各有特色哈哈哈。下午我们下水抓鱼！后一天回到了成都，好幸福，我们吃着外卖看着电影，某种物质yyds，除了最后一段真的很好看，第一步电影没看懂哈哈哈，但还是不错。贵州之行真的美好！！！！！</p>
+                </div>
+            </div>
+	</div>
+
+
+        <!-- 结束语 -->
+        <div class="ending-message" style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="heart-divider">💖</div>
+            <h2>致何欣然</h2>
+            <p>亲爱的欣然，</p>
+            <p >&nbsp;&nbsp;看着这些时间轴上的回忆，我想起了我们在一起的点点滴滴。从2024年8月9日的第一次见面，到现在已经走过了这么多个美好的日子。这一路走来，我们一起经历了那么多的快乐、感动和成长，但也有痛苦。从安仁古镇的雨天漫步，到天津、长沙、重庆、烟台、贵阳的旅行足迹；从第一次异地恋的思念，到第一次相聚的甜蜜；从日常的点点滴滴，到中秋节，情人节，七夕节，春节。</p>
+            <p>&nbsp;&nbsp;这期间我做过很多蠢事，让你伤透了心，但感谢你一直以来的陪伴和包容，感谢你给我带来的所有快乐和温暖。你的笑容就是我最大的幸福。无论未来我们走到哪里，无论遇到什么挑战，我都会一直陪在你身边，就像你一直陪伴着我一样。</p>
+            <p>&nbsp;&nbsp;所以欣然，我们能否将这时间轴延续下去？记录下我们生命中每一个重要的时刻。</p>
+            <p style="text-align: right;">永远爱你的F老师💖</p>
+        </div>
+    </div>
+    
+    <div class="music-controls">
+        <button class="music-btn" onclick="toggleMusic()">🎵 播放音乐</button>
+    </div>
+    
+    
+    <audio id="backgroundMusic" loop>
+	 <source src="./music/love-song.mp3" type="audio/mpeg">
+    	<source src="./music/love-song.ogg" type="audio/ogg">
+    	您的浏览器不支持音频元素。
+    </audio>
+
+    <script>
+        let musicPlaying = false;
+        const audio = document.getElementById('backgroundMusic');
+
+        function toggleMusic() {
+            const btn = document.querySelector('.music-btn');
+            if (musicPlaying) {
+                audio.pause();
+                btn.textContent = '🎵 播放音乐';
+                musicPlaying = false;
+            } else {
+                audio.play().then(() => {
+                    btn.textContent = '⏸️ 暂停音乐';
+                    musicPlaying = true;
+                }).catch(error => {
+                    console.log('音频播放失败:', error);
+                    alert('音乐播放失败，请检查浏览器设置');
+                });
+            }
+        }
+
+        function animateOnScroll() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const elementTop = item.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    item.style.animationPlayState = 'running';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        document.querySelectorAll('.timeline-content').forEach(content => {
+            content.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
+            });
+            
+            content.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+            });
+        });
+    </script>
+</body>
+</html>
